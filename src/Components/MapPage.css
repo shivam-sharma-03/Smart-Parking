@@ -1,0 +1,13 @@
+/* MapPage.css */
+.map-page {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .leaflet-bar {
+    z-index: 1000; /* Ensure the search bar appears above the map */
+  }
+  
