@@ -1,13 +1,49 @@
 /* MapPage.css */
 .map-page {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .leaflet-bar {
-    z-index: 1000; /* Ensure the search bar appears above the map */
-  }
-  
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leaflet-bar {
+  z-index: 1000; /* Ensure the search bar appears above the map */
+}
+
+.search-bar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 300px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.suggestions {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  background-color: white;
+  position: absolute;
+  z-index: 1000; /* Ensure suggestions appear on top */
+  width: calc(100% - 40px); /* Match width with input */
+}
+
+.suggestions li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0; /* Highlight on hover */
+}

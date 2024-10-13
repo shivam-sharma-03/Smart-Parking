@@ -1,9 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Navbar from "./Navbar";
 
-const Landingpage = () => {
+const HomePage = () => {
+  const navigate = useNavigate();
+
+  const navigateToMap = () => {
+    navigate('/map'); 
+  };
+
   return (
-    <div>Landingpage</div>
-  )
-}
+    <div>
+      <Navbar />
+      <h1>Welcome to the Smart Parking System</h1>
+      <p>Find and book parking spaces with ease.</p>
+      <button onClick={navigateToMap}>Find Parking</button>
+    </div>
+  );
+};
 
-export default Landingpage
+export default HomePage;

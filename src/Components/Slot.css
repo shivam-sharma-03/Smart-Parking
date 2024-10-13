@@ -1,0 +1,19 @@
+.parking-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .slot {
+    background-color: #ccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .slot.selected {
+    background-color: #4caf50;
+    color: white;
+  }
+  

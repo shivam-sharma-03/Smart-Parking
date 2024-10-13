@@ -1,3 +1,9 @@
+jklu: 26.836245709323638 75.64977771170767
+Khetan Hospital: 26.958984761155595 75.77107213767
+Candlewck Public School: 26.958587499300968 75.77633549005996
+NK Public School: 27.069682558830543 75.74919429182185
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
