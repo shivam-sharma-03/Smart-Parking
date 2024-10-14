@@ -1,0 +1,68 @@
+/* Navbar styling */
+.navbar {
+    background-color: #ffffff; /* White background */
+    color: #333333; /* Dark text for better contrast */
+    padding: 6px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Keep navbar fixed */
+    top: 50px; /* Move the navbar a little down from the top */
+    width: calc(100% - 200px); /* Adjust width to allow for padding */
+    height: 60px; /* Height of the navbar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 10px; /* Slightly rounded corners */
+    z-index: 1000; /* Ensure it's on top of other content */
+    transition: background 0.3s ease; /* Smooth transition effect */
+}
+
+/* Change background on hover */
+
+/* Logo styling */
+.logo {
+    font-size: 22px; /* Slightly larger logo */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Slightly reduce spacing for logo */
+    color: #333333; /* Darker text color for logo */
+    transition: transform 0.3s ease; /* Add hover effect */
+}
+
+/* Logo hover effect */
+.logo:hover {
+    transform: scale(1.1); /* Slight enlarge on hover */
+}
+
+/* Navigation links styling */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px; /* Increased gap for spacing */
+}
+
+/* Link styling */
+.nav-links a {
+    color: #333333; /* Dark text color for links */
+    text-decoration: none;
+    font-size: 17px; /* Adjusted font size */
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease; /* Transition effects */
+}
+
+/* Link hover effect */
+.nav-links a:hover {
+    color: #d48d12; /* Change color on hover */
+    transform: scale(1.1); /* Slight grow effect on hover */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 20px; /* Adjust gap for smaller screens */
+    }
+
+    .logo {
+        font-size: 22px; /* Adjust logo size for smaller screens */
+    }
+}

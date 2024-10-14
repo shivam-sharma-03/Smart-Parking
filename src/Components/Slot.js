@@ -16,16 +16,16 @@ const Slot = () => {
   };
 
   const proceedToPayment = () => {
-    if (selectedSlot) {
-      navigate('/payment');
+    if (selectedSlot !== null) {
+      navigate('/payment', { state: { selectedSlot: selectedSlot + 1 } });
     } else {
       alert('Please select a parking slot.');
     }
   };
 
   return (
-    <div>
-      <h2>Select a Parking Slot: {locationName}</h2>
+    <div className="container">
+      <h2>Select a Parking Slot at {locationName}</h2>
       <div className="parking-grid">
         {[...Array(10)].map((_, index) => (
           <div
@@ -37,9 +37,13 @@ const Slot = () => {
           </div>
         ))}
       </div>
-      <button onClick={proceedToPayment}>Proceed to Payment</button>
+      <button onClick={proceedToPayment} disabled={selectedSlot === null}>
+        {selectedSlot !== null
+          ? `Proceed with Slot ${selectedSlot + 1}`
+          : 'Please select a slot'}
+      </button>
     </div>
   );
-}
+};
 
 export default Slot;
