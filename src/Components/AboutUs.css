@@ -1,0 +1,19 @@
+.about-us {
+    padding: 80px;
+    margin-top: 0px;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background: linear-gradient(to right, #110a71, #0083b0);
+    color: white;
+}
+
+.about-us h1 {
+    color: #ffffff; 
+    margin-top: 40px;
+}
+
+.about-us p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #e0e0e0;
+}

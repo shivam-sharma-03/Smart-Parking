@@ -1,10 +1,11 @@
 /* MapPage.css */
 .map-page {
-  height: 100vh;
+  height: calc(100vh - 60px); /* Adjust height to account for navbar height */
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative; /* Ensure child elements are positioned relative to this */
 }
 
 .leaflet-bar {
@@ -13,7 +14,7 @@
 
 .search-bar {
   position: absolute;
-  top: 10px;
+  top: 10px; /* Adjust as necessary for spacing */
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;

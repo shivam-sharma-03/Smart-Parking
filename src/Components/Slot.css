@@ -1,19 +1,82 @@
+/* General page styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Center the content with some padding */
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Parking grid layout */
 .parking-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  .slot {
-    background-color: #ccc;
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
-  }
-  
-  .slot.selected {
-    background-color: #4caf50;
-    color: white;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin-top: 30px;
+}
+
+/* Parking slot styling */
+.slot {
+  background-color: #ddd;
+  padding: 30px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slot:hover {
+  background-color: #bdbdbd;
+  transform: scale(1.05);
+}
+
+/* Selected slot styling */
+.slot.selected {
+  background-color: #4caf50;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* Button styling */
+button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.2s;
+}
+
+button:hover {
+  background-color: #45a049;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
