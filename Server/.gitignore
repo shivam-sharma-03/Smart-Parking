@@ -61,6 +61,70 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+dist/
+build/
+eggs/
+
+# Django migrations
+*/migrations/__init__.py
+*/migrations/*.py
+
+# Database files
+*.sqlite3
+
+# Static files
+/static/
+*.log
+
+# Media files
+/media/
+
+# Python environment variables
+*.env
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# PyCharm settings
+.idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Coverage reports
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+
+# Local development environment settings
+local_settings.py
+
+# Ignore pytest cache
+.cache
+pytest_cache/
+
+# Ignore Docker files
+*.dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+
+
 # Flask stuff:
 instance/
 .webassets-cache

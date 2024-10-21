@@ -6,6 +6,7 @@ import Slot from './Components/Slot';
 import Pay from './Components/Pay';
 import AboutUs from './Components/AboutUs';
 import ContactUs from './Components/ContactUs';
+import AppTest from './Components/AppTest';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/payment" element={<Pay />} />
           <Route path="/contact" element={<ContactUs />} /> 
+          <Route path='/test' element={<AppTest />}></Route>
         </Routes>
       </div>
     </Router>
