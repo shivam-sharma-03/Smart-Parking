@@ -1,64 +1,99 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import axios from 'axios';
+import './AppTest.css';
 
 const AppTest = () => {
-    const [latestIrData, setLatestIrData] = useState({
-        nodemcu: null,
-        raspberry_pi: null,
-    });
+  const [sensorReadings, setSensorReadings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://192.168.30.143:8000/ir-data/', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
+  useEffect(() => {
+    let isMounted = true;
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch');
-                }
+    const fetchSensorData = async () => {
+      try {
+        const response = await axios.get('http://192.168.30.143:8000/ir-data/');
+        console.log(response.data); // Log the response data
 
-                const data = await response.json();
-                setLatestIrData(data); // Update the state with data from both sources
-            } catch (error) {
-                console.error(error.message);
-            }
-        };
+        if (isMounted) {
+          setSensorReadings(response.data);
+          setError(null);
+          setLoading(false);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError("Failed to load sensor data.");
+          setLoading(false);
+        }
+      }
+    };
 
-        const interval = setInterval(fetchData, 1000); // Poll every second
+    fetchSensorData();
+    const interval = setInterval(fetchSensorData, 1000);
 
-        return () => clearInterval(interval); // Clean up on unmount
-    }, []);
+    return () => {
+      clearInterval(interval);
+      isMounted = false;
+    };
+  }, []);
 
-    return (
-        <div className="App">
-            <h1>Latest IR Sensor Data</h1>
-            <div>
-                <h2>NodeMCU</h2>
-                {latestIrData.nodemcu && latestIrData.nodemcu.sensor_value ? (
-                    <p>
-                        Sensor Value: {latestIrData.nodemcu.sensor_value} at{' '}
-                        {new Date(latestIrData.nodemcu.timestamp).toLocaleString()}
-                    </p>
-                ) : (
-                    <p>No data available</p>
-                )}
-            </div>
-            <div>
-                <h2>Raspberry Pi</h2>
-                {latestIrData.raspberry_pi && latestIrData.raspberry_pi.sensor_value ? (
-                    <p>
-                        Sensor Value: {latestIrData.raspberry_pi.sensor_value} at{' '}
-                        {new Date(latestIrData.raspberry_pi.timestamp).toLocaleString()}
-                    </p>
-                ) : (
-                    <p>No data available</p>
-                )}
-            </div>
+  const controlServo = useCallback(async (servo, action) => {
+    try {
+      const angle = action === 'open' ? 180 : 0;
+      await axios.post('http://192.168.30.143:8000/servo-command/', {
+        [servo]: angle
+      });
+      alert(`Servo ${servo} ${action}ed successfully.`);
+    } catch (err) {
+      alert(`Failed to ${action} Servo ${servo}.`);
+    }
+  }, []);
+  
+
+  return (
+    <div className="dashboard">
+      <h1 className="heading">Sensor Readings</h1>
+
+      <div className="sensors">
+        <h2>IR Sensor Data</h2>
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p className="error">{error}</p>
+        ) : (
+          <table className="sensor-table">
+            <thead>
+              <tr>
+                <th>Pin</th>
+                <th>Reading</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sensorReadings.map((reading, index) => (
+                <tr key={index}>
+                  <td>{reading.pin}</td>
+                  <td>{reading.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+
+      <div className="servo-controls">
+        <div className="servo">
+          <h3>Servo 1 Controls</h3>
+          <button onClick={() => controlServo('servo1', 'open')} className="button open">Open</button>
+          <button onClick={() => controlServo('servo1', 'close')} className="button close">Close</button>
         </div>
-    );
+        <div className="servo">
+          <h3>Servo 2 Controls</h3>
+          <button onClick={() => controlServo('servo2', 'open')} className="button open">Open</button>
+          <button onClick={() => controlServo('servo2', 'close')} className="button close">Close</button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default AppTest;

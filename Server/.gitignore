@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Genereated Log file
+ir_data_log.txt
+
 # C extensions
 *.so
 
